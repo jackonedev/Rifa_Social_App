@@ -1,2 +1,5 @@
 ChatBot Whatsapp
 notas_youtube
+*venv/*
+*.env*
+*__pycache__*
