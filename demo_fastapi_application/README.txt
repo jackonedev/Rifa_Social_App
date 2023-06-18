@@ -45,5 +45,10 @@ Sorteo:
 
 
 CLIENTE
+Cliente:
+-id
+-nombre
+-telefono
+-cumpleaños (nullable=True)
 
 COMODATO
