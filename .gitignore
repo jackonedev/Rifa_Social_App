@@ -1,5 +1,6 @@
 ChatBot Whatsapp
-notas_youtube
+notas_youtube/
+repo_original/
 demo_fastapi_application/venv/*
 *.env*
 *__pycache__*
