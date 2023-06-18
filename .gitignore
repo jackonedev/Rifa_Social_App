@@ -1,5 +1,5 @@
 ChatBot Whatsapp
 notas_youtube
-*venv/*
+demo_fastapi_application/venv/*
 *.env*
 *__pycache__*
