@@ -2,32 +2,15 @@ from fastapi import FastAPI, HTTPException, status
 from pydantic import BaseModel
 from typing import Optional
 from datetime import datetime
-#https://youtu.be/ToXOb-lpipM?t=4959
+from .database.database import engine
+from .database import models
+from .schemas.premios import Premio
+from .schemas.clientes import Cliente
+from .schemas.rifas import Rifa
+#https://youtu.be/ToXOb-lpipM
 
 
-class Premio(BaseModel):
-    id: int
-    nombre: str
-    descripcion: str
-    precio_dcto: str
-    fecha_ingreso: datetime
-    auspiciante: Optional[str] = None
-    imagen: Optional[str] = None
-
-
-class Cliente(BaseModel):
-    id: int
-    nombre_apellido: str
-    telefono: str
-    cumple: str
-    fecha_registro: datetime
-
-class Rifa(BaseModel):
-    id: int
-    cliente: str
-    telefono: str
-    fecha_inscripcion: datetime
-    lugar_inscripcion: str
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
@@ -35,12 +18,6 @@ app = FastAPI()
 @app.get("/")
 def root():
     return {"message": "Hello World"}
-
-
-
-
-
-
 
 
 ## CRUD PREMIOS ##
