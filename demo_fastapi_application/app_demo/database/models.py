@@ -7,7 +7,7 @@ class Cliente(Base):
     __tablename__ = "clientes"
     id = Column(Integer, primary_key=True, nullable=False)
     nombre = Column(String, nullable=False)
-    apellido = Column(String, nullable=False)
+    apellido = Column(String, nullable=True)
     telefono = Column(String, nullable=False)
     fecha_cumple = Column(String, nullable=True)
     fecha_registro = Column(TIMESTAMP(timezone=True),
@@ -32,6 +32,7 @@ class Rifa(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     jugador = Column(String, nullable=False)#TODO: When a rifa is purchased, it is verified if the player exists in the customer table, if it does not exist, a new customer is created
     contacto = Column(String, nullable=False)
+    fecha_cumple = Column(String, nullable=True)
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     lugar_registro = Column(String, nullable=False)
