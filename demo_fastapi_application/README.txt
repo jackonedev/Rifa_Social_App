@@ -47,7 +47,7 @@ Sorteo:
 CLIENTE
 Cliente:
 -id
--nombre
+-nombre y apellido
 -telefono
 -cumpleaños (nullable=True)
 
