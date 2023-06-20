@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, LargeBinary, Date  
+from sqlalchemy import CheckConstraint, Column, Integer, String, Boolean, ForeignKey, LargeBinary, Date  
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from .database import Base
@@ -11,6 +11,12 @@ class Cliente(Base):
     nombre = Column(String, nullable=False)
     apellido = Column(String, nullable=True)
     telefono = Column(String, nullable=False, unique=True)
+    # telefono = Column(
+    #     String, 
+    #     CheckConstraint('telefono ~* \'^\\d{4}-\\d{8}$|^\\d{3}-\\d{9}$\'', name='valid_telefono'),
+    #     nullable=False, unique=True
+    #     )
+
     fecha_cumple = Column(Date, nullable=True)
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
@@ -35,7 +41,7 @@ class Rifa(Base):
     id = Column(Integer, primary_key=True, nullable=False)
     jugador = Column(String, nullable=False)# "nombre y apellido"
     telefono = Column(String, nullable=False)
-    fecha_cumple = Column(Date, nullable=True)
+    # fecha_cumple = Column(Date, nullable=True)# cuando se crea una rifa se solicita, pero no se almacena en dicha rifa
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
-    lugar_registro = Column(String, nullable=False)
+    lugar_registro = Column(String, nullable=False, default='Lima - Gral. Paz')

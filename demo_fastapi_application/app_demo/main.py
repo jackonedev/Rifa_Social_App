@@ -2,15 +2,13 @@ from fastapi import FastAPI
 from .database.database import engine
 from .database import models
 from fastapi.middleware.cors import CORSMiddleware
-from .api import premios
+from .api import premios, clientes, rifas
 #https://youtu.be/ToXOb-lpipM
 
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
-
-
 
 origins = ["*"]
 
@@ -23,6 +21,9 @@ app.add_middleware(
 )
 
 app.include_router(premios.router)
+app.include_router(clientes.router)
+app.include_router(rifas.router)
+
 
 @app.get("/")
 def root():

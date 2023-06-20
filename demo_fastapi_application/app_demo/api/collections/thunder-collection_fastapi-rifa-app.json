@@ -1,0 +1,271 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "fastapi-rifa-app",
+    "dateExported": "2023-06-20T19:47:30.748Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "Premios",
+            "containerId": "",
+            "created": "2023-06-20T13:24:49.689Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "e4c25930-b85f-4af7-bd3d-00b7d72e381b",
+            "name": "Rifas",
+            "containerId": "",
+            "created": "2023-06-20T19:09:55.840Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "de05ba8b-5c1c-479c-b6ab-eef69400d037",
+            "name": "Clientes",
+            "containerId": "",
+            "created": "2023-06-20T19:10:00.007Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "a3de6947-b2b6-4745-8314-0d3d7c09b958",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "get_all",
+            "url": "http://127.0.0.1:8000/v1/premios",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-18T17:22:38.523Z",
+            "modified": "2023-06-20T13:24:53.341Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "da3afb98-db4c-4cb7-9a4a-6b4f95dd72e9",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "e4c25930-b85f-4af7-bd3d-00b7d72e381b",
+            "name": "get_all",
+            "url": "http://127.0.0.1:8000/v1/rifas",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-20T19:09:55.840Z",
+            "modified": "2023-06-20T19:10:55.845Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0a76c140-0d7f-41ba-b4ce-19177c4891e6",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "de05ba8b-5c1c-479c-b6ab-eef69400d037",
+            "name": "get_all",
+            "url": "http://127.0.0.1:8000/v1/clientes",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-20T19:10:00.007Z",
+            "modified": "2023-06-20T19:12:23.307Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ddfca5d9-64e5-4cfd-ba28-811e4742c048",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "crear premio",
+            "url": "http://127.0.0.1:8000/v1/premios",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-18T17:35:26.477Z",
+            "modified": "2023-06-20T19:47:21.187Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Descuento en Chopp!\",\n  \"precio\": 3000,\n  \"descuento\": 25,\n  \"cantidad\": 5\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8acfd4c4-b893-4ad0-b604-31824b101c9f",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "e4c25930-b85f-4af7-bd3d-00b7d72e381b",
+            "name": "crear rifa",
+            "url": "http://127.0.0.1:8000/v1/rifas",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-20T19:09:55.842Z",
+            "modified": "2023-06-20T19:42:29.245Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"jugador\": \"Canolis!\",\n  \"telefono\": \"385958746\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8f21acfc-80cf-4973-8a5a-80dc66efa0c3",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "de05ba8b-5c1c-479c-b6ab-eef69400d037",
+            "name": "crear cliente",
+            "url": "http://127.0.0.1:8000/v1/clientes",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-20T19:10:00.008Z",
+            "modified": "2023-06-20T19:43:20.592Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"nombre\": \"Agustin\",\n    \"apellido\": \"Stigliano\",\n    \"telefono\": \"351156f109966\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1348071d-8a1b-4345-9dd4-e182b98c4774",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "premio_id",
+            "url": "http://127.0.0.1:8000/v1/premios/6",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-06-18T17:42:30.212Z",
+            "modified": "2023-06-20T15:19:00.494Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "899dfe59-5357-4a6c-acb5-5d0211781e0f",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "e4c25930-b85f-4af7-bd3d-00b7d72e381b",
+            "name": "rifa_id",
+            "url": "http://127.0.0.1:8000/v1/rifas/1",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-06-20T19:09:55.843Z",
+            "modified": "2023-06-20T19:42:07.866Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5e17acb2-c822-4ee0-9319-38fbf570e8c5",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "de05ba8b-5c1c-479c-b6ab-eef69400d037",
+            "name": "cliente_id",
+            "url": "http://127.0.0.1:8000/v1/clientes/2",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-06-20T19:10:00.009Z",
+            "modified": "2023-06-20T19:43:36.543Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "034d35ea-5486-491a-9646-83c86ddad431",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "update_premio",
+            "url": "http://127.0.0.1:8000/v1/premios/3",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-06-20T15:19:23.627Z",
+            "modified": "2023-06-20T15:25:44.869Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"cantidad\":4,\n  \"id\":10\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "840c46ad-0184-4228-a0aa-f680c34b609f",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "e4c25930-b85f-4af7-bd3d-00b7d72e381b",
+            "name": "update_rifa",
+            "url": "http://127.0.0.1:8000/v1/rifas/3",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-06-20T19:09:55.844Z",
+            "modified": "2023-06-20T19:44:27.608Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"lugar_registro\": \"Pepa - Lima\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "2c334bdd-e015-4a98-8f26-4175aaab6be6",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "de05ba8b-5c1c-479c-b6ab-eef69400d037",
+            "name": "update_cliente",
+            "url": "http://127.0.0.1:8000/v1/clientes/2",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-06-20T19:10:00.010Z",
+            "modified": "2023-06-20T19:46:40.496Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"telefono\": \"3512203816\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "14e7e597-63cd-4cae-89f6-c066a8fb164b",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "delete_premio",
+            "url": "http://127.0.0.1:8000/v1/premios/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-06-20T15:27:29.634Z",
+            "modified": "2023-06-20T15:27:52.242Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "01c27b53-542e-4f77-b4e1-da5c658a29df",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "e4c25930-b85f-4af7-bd3d-00b7d72e381b",
+            "name": "delete_rifa",
+            "url": "http://127.0.0.1:8000/v1/rifas/2",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-06-20T19:09:55.845Z",
+            "modified": "2023-06-20T19:42:52.218Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5ab2d389-5316-4e94-88e0-acfb4bc5f527",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "de05ba8b-5c1c-479c-b6ab-eef69400d037",
+            "name": "delete_cliente",
+            "url": "http://127.0.0.1:8000/v1/clientes/7",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-06-20T19:10:00.011Z",
+            "modified": "2023-06-20T19:45:34.902Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
