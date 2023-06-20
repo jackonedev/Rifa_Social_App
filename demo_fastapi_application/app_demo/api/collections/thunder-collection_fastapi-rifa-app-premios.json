@@ -1,0 +1,97 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "fastapi-rifa-app",
+    "dateExported": "2023-06-20T15:34:30.416Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "Premios",
+            "containerId": "",
+            "created": "2023-06-20T13:24:49.689Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "a3de6947-b2b6-4745-8314-0d3d7c09b958",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "get_all",
+            "url": "http://127.0.0.1:8000/v1/premios",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-06-18T17:22:38.523Z",
+            "modified": "2023-06-20T13:24:53.341Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ddfca5d9-64e5-4cfd-ba28-811e4742c048",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "crear premio",
+            "url": "http://127.0.0.1:8000/v1/premios",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-06-18T17:35:26.477Z",
+            "modified": "2023-06-20T15:16:27.867Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"nombre\": \"Descuento en Chopp!\",\r\n  \"precio\": 3000,\r\n  \"descuento\": 25,\r\n  \"cantidad\": 5\r\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "1348071d-8a1b-4345-9dd4-e182b98c4774",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "premio_id",
+            "url": "http://127.0.0.1:8000/v1/premios/6",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-06-18T17:42:30.212Z",
+            "modified": "2023-06-20T15:19:00.494Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "034d35ea-5486-491a-9646-83c86ddad431",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "update_premio",
+            "url": "http://127.0.0.1:8000/v1/premios/3",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2023-06-20T15:19:23.627Z",
+            "modified": "2023-06-20T15:25:44.869Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"cantidad\":4,\n  \"id\":10\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "14e7e597-63cd-4cae-89f6-c066a8fb164b",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "b714f6e1-4afd-4edf-86cb-88c2fd678d6f",
+            "name": "delete_premio",
+            "url": "http://127.0.0.1:8000/v1/premios/1",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-06-20T15:27:29.634Z",
+            "modified": "2023-06-20T15:27:52.242Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
