@@ -1,29 +1,31 @@
-from pydantic import BaseModel, HttpUrl
+### schema.premios.py
 from typing import Optional
+from pydantic import BaseModel, HttpUrl
 from datetime import datetime
 
 
 class PremioBase(BaseModel):
     nombre: str
-    descripcion: str
+    cantidad: Optional[int]
     precio: int
-    descuento: int
-    cantidad: int
+    descuento: Optional[int]
+    auspiciante: Optional[str]
+    imagen_url: Optional[HttpUrl]
 
 class PremioCreate(PremioBase):
-    auspiciante: Optional[str] = None
-    imagen: Optional[str] = None
-    imagen_url: Optional[str] = None
+    pass
 
+class PremioUpdate(BaseModel):
+    nombre: Optional[str]
+    cantidad: Optional[int]
+    precio: Optional[int]
+    descuento: Optional[int]
+    auspiciante: Optional[str]
+    imagen_url: Optional[HttpUrl]
 
 class Premio(PremioBase):
     id: int
-    auspiciante: Optional[str] = None
-    imagen: Optional[str] = None
-    imagen_url: Optional[HttpUrl] = None
     fecha_registro: datetime
 
     class Config:
         orm_mode = True
-
-
