@@ -1,0 +1,1 @@
+## Validación utilizando decoradores: https://docs.pydantic.dev/latest/usage/validators/
