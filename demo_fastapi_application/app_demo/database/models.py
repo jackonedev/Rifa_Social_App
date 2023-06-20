@@ -20,13 +20,13 @@ class Premio(Base):
     __tablename__ = "premios"
     id = Column(Integer, primary_key=True, nullable=False)
     nombre = Column(String, nullable=False)
-    descripcion = Column(String, nullable=False)
-    cantidad = Column(Integer, nullable=False, default=1)
-    precio = Column(Integer, nullable=False, default=3000)
-    descuento = Column(Integer, nullable=False, default=25)
-    auspiciante = Column(String, nullable=False, default="Anónimo")
-    imagen = Column(LargeBinary, nullable=True)
-    imagen_url = Column(String(500), nullable=True, index=True)
+    # descripcion = Column(String, nullable=False)
+    cantidad = Column(Integer, nullable=False, server_default='1')
+    # precio = Column(Integer, nullable=False, server_default='3000')
+    # descuento = Column(Integer, nullable=False, server_default='25')
+    # auspiciante = Column(String, nullable=False, server_default="Anónimo")
+    ## imagen = Column(LargeBinary, nullable=True)
+    # imagen_url = Column(String(500), nullable=True, index=True)
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
 
