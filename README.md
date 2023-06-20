@@ -4,7 +4,7 @@ Backend de una aplicación para Registrar CLIENTES por medio de RIFAS, que promo
 
 El diagrama de la app es el siguiente:
 
-
+![Alt text](esquema_app_sin_deploy.jpg)
 
 <br />
 <br />
