@@ -33,9 +33,9 @@ class Premio(Base):
 class Rifa(Base):
     __tablename__ = "rifas"
     id = Column(Integer, primary_key=True, nullable=False)
-    jugador = Column(String, nullable=False)
-    contacto = Column(String, nullable=False)
-    fecha_cumple = Column(String, nullable=True)
+    jugador = Column(String, nullable=False)# "nombre y apellido"
+    telefono = Column(String, nullable=False)
+    fecha_cumple = Column(Date, nullable=True)
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     lugar_registro = Column(String, nullable=False)
