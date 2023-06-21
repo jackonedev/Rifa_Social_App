@@ -4,6 +4,7 @@
 fastapi[all]
 uvicorn[standard]
 SQLAlchemy
+pytest
 
 #2) Conexión de la base de datos
 utils.config.py
@@ -25,9 +26,9 @@ main.py: colocamos MiddleWare y añadimos routers
 
 #6) Validaciones
 
-#7) Autenticación
+#7) Testing
 
-#8) Testing
+#8) Autenticación
 
 #9) Migraciones
 
