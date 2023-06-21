@@ -19,9 +19,9 @@ def test_get_one_premio_not_exist(client):
 
 
 @pytest.mark.parametrize("nombre, precio", [
-    ("Birra x4", 3000),
-    ("Birra x6", 4000),
-    ("Birra x8", 5000),
+    ("Auto", 40000),
+    ("Picada x4", 3000),
+    ("Chopp", 5000),
 ])
 def test_create_premio(client, session, nombre, precio):
     res = client.post(
@@ -33,17 +33,17 @@ def test_create_premio(client, session, nombre, precio):
 
 
 def test_get_one_premio(client, session):
-    premio = premios.PremioCreate(nombre="Picada", precio=3000)
-    session.add(premio)
-    session.commit()
+    # premio = premios.PremioCreate(nombre="Picada", precio=3000)
+    # session.add(premio)
+    # session.commit()
 
 
     res = client.get(f"/v1/premios/1")
     assert res.status_code == 200
     retrieved_premio = premios.Premio(**res.json())
-    assert retrieved_premio.id == premio.id
-    assert retrieved_premio.nombre == premio.nombre
-    assert retrieved_premio.precio == premio.precio
+    assert retrieved_premio.id == 1
+    assert retrieved_premio.nombre == 'Auto'
+    assert retrieved_premio.precio == 40000
 
 
 
