@@ -25,3 +25,10 @@ class Rifa(RifaBase):
 
     class Config:
         orm_mode = True
+
+class RifaOut(BaseModel):
+    id: int
+    jugador: str
+
+    class Config:
+        orm_mode = True
