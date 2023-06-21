@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 
 from ..database import models
-from ..schemas.rifas import Rifa, RifaCreate, RifaUpdate
+from ..schemas.rifas import Rifa, RifaCreate, RifaUpdate, RifaOut
 from ..database.database import get_db
 
 router = APIRouter(
@@ -33,8 +33,8 @@ def create_rifa(rifa: RifaCreate, db: Session = Depends(get_db)):
     db.refresh(db_rifa)
     return db_rifa
 
-# Read all
-@router.get("/", response_model=List[Rifa])
+# Read all Rifas -> schema RifaOut para que todo el mundo tenga acceso a las rifas vendidas, pero no a los telefonos
+@router.get("/", response_model=List[RifaOut])
 def read_rifas(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     rifas = db.query(models.Rifa).offset(skip).limit(limit).all()
     return rifas
