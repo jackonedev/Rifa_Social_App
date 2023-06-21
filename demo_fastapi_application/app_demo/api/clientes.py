@@ -1,6 +1,7 @@
 from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from typing import List, Optional
+from datetime import datetime
 
 from ..database import models
 from ..schemas.clientes import Cliente, ClienteCreate, ClienteUpdate
@@ -15,6 +16,11 @@ router = APIRouter(
 # Create
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=Cliente)
 def create_cliente(cliente: ClienteCreate, db: Session = Depends(get_db)):
+    # Verificar el formato con el que llega cliente.fecha_cumple
+    if cliente.fecha_cumple:
+        cliente.fecha_cumple = datetime.strptime(cliente.fecha_cumple, '%d/%m/%Y')
+    else:
+        cliente.fecha_cumple = None
     db_cliente = models.Cliente(**cliente.dict())
     db.add(db_cliente)
     db.commit()
