@@ -17,6 +17,23 @@ api.premios.py
 api.collections/
 main.py: colocamos MiddleWare y añadimos routers
 
+#4) CRUD: Clientes
+...
+
+#5) CRUD: Rifas
+...
+
+#6) Validaciones
+
+#7) Autenticación
+
+#8) Testing
+
+#9) Migraciones
+
+#10) Deployment
+
+#11) Presentacion
 
 
 # NOTAS DE LOS MODELOS
