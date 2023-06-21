@@ -1,3 +1,4 @@
+alembic==1.11.1
 altgraph==0.17.3
 anyio==3.6.2
 argon2-cffi==21.3.0
@@ -35,6 +36,7 @@ httptools==0.5.0
 httpx==0.24.1
 idlex==1.22
 idna==3.4
+iniconfig==2.0.0
 ipykernel==6.21.2
 ipython==8.10.0
 ipython-genutils==0.2.0
@@ -56,6 +58,7 @@ jupyter_server_terminals==0.4.4
 jupyterlab-pygments==0.2.2
 jupyterlab-widgets==3.0.5
 kiwisolver==1.4.4
+Mako==1.2.4
 markdown-it-py==2.2.0
 MarkupSafe==2.1.2
 matplotlib==3.7.0
@@ -83,6 +86,7 @@ Pillow==9.4.0
 pipenv==2023.2.18
 platformdirs==3.0.0
 plotly==5.13.0
+pluggy==1.2.0
 prometheus-client==0.16.0
 prompt-toolkit==3.0.36
 psutil==5.9.4
@@ -98,6 +102,7 @@ PyQt5==5.15.9
 PyQt5-Qt5==5.15.2
 PyQt5-sip==12.11.1
 pyrsistent==0.19.3
+pytest==7.3.2
 python-dateutil==2.8.2
 python-dotenv==1.0.0
 python-json-logger==2.0.6
