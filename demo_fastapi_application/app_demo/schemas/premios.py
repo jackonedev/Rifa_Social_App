@@ -10,6 +10,7 @@ class PremioBase(BaseModel):
     precio: int
     descuento: Optional[int]
     auspiciante: Optional[str]
+    descripcion: Optional[str]
     imagen_url: Optional[HttpUrl]
 
 class PremioCreate(PremioBase):
@@ -21,6 +22,7 @@ class PremioUpdate(BaseModel):
     precio: Optional[int]
     descuento: Optional[int]
     auspiciante: Optional[str]
+    descripcion: Optional[str]
     imagen_url: Optional[HttpUrl]
 
 class Premio(PremioBase):
