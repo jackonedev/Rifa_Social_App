@@ -6,6 +6,7 @@ from datetime import datetime
 from ..database import models
 from ..schemas.clientes import Cliente, ClienteCreate, ClienteUpdate
 from ..database.database import get_db
+from ..utils.tools import define_date, define_date_w_year
 
 router = APIRouter(
     prefix="/v1/clientes",
@@ -18,9 +19,18 @@ router = APIRouter(
 def create_cliente(cliente: ClienteCreate, db: Session = Depends(get_db)):
     # Verificar el formato con el que llega cliente.fecha_cumple
     if cliente.fecha_cumple:
-        cliente.fecha_cumple = datetime.strptime(cliente.fecha_cumple, '%d/%m/%Y')
-    else:
-        cliente.fecha_cumple = None
+            try:
+                define_date_w_year(cliente.fecha_cumple)
+                cliente.fecha_cumple = define_date_w_year(cliente.fecha_cumple)
+            except ValueError:
+                try:
+                    define_date(cliente.fecha_cumple)
+                    cliente.fecha_cumple = define_date(cliente.fecha_cumple)
+                except ValueError:
+                    # raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Formato de fecha incorrecto")
+                    # descartamos el input ingresado
+                    cliente.fecha_cumple = None
+
     db_cliente = models.Cliente(**cliente.dict())
     db.add(db_cliente)
     db.commit()
