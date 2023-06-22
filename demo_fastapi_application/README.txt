@@ -5,7 +5,7 @@ fastapi[all]
 uvicorn[standard]
 SQLAlchemy
 pytest
-passlib
+passlib[bcrypt]
 python-jose[cryptography]
 
 #2) Conexión de la base de datos
