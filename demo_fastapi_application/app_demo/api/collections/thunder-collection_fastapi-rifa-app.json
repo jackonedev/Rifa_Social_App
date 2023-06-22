@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "fastapi-rifa-app",
-    "dateExported": "2023-06-20T19:47:30.748Z",
+    "dateExported": "2023-06-22T22:14:27.363Z",
     "version": "1.1",
     "folders": [
         {
@@ -24,6 +24,13 @@
             "containerId": "",
             "created": "2023-06-20T19:10:00.007Z",
             "sortNum": 30000
+        },
+        {
+            "_id": "3bde8f91-b23a-49a0-8ca0-262ea53215e1",
+            "name": "Users",
+            "containerId": "",
+            "created": "2023-06-22T20:44:18.337Z",
+            "sortNum": 40000
         }
     ],
     "requests": [
@@ -97,12 +104,12 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-06-20T19:09:55.842Z",
-            "modified": "2023-06-20T19:42:29.245Z",
+            "modified": "2023-06-21T18:38:06.337Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"jugador\": \"Canolis!\",\n  \"telefono\": \"385958746\"\n}",
+                "raw": "{\n  \"jugador\": \"Canoliss!\",\n  \"telefono\": \"+543516109966\"\n}",
                 "form": []
             },
             "tests": []
@@ -116,12 +123,12 @@
             "method": "POST",
             "sortNum": 20000,
             "created": "2023-06-20T19:10:00.008Z",
-            "modified": "2023-06-20T19:43:20.592Z",
+            "modified": "2023-06-21T22:09:29.691Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n    \"nombre\": \"Agustin\",\n    \"apellido\": \"Stigliano\",\n    \"telefono\": \"351156f109966\"\n}",
+                "raw": "{\n    \"nombre\": \"Federico\",\n    \"apellido\": \"Stigliano\",\n    \"telefono\": \"3511569066\",\n    \"fecha_cumple\": \"30 de mayo\"\n}",
                 "form": []
             },
             "tests": []
@@ -145,11 +152,11 @@
             "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
             "containerId": "e4c25930-b85f-4af7-bd3d-00b7d72e381b",
             "name": "rifa_id",
-            "url": "http://127.0.0.1:8000/v1/rifas/1",
+            "url": "http://127.0.0.1:8000/v1/rifas/9",
             "method": "GET",
             "sortNum": 30000,
             "created": "2023-06-20T19:09:55.843Z",
-            "modified": "2023-06-20T19:42:07.866Z",
+            "modified": "2023-06-21T18:40:03.155Z",
             "headers": [],
             "params": [],
             "tests": []
@@ -192,16 +199,16 @@
             "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
             "containerId": "e4c25930-b85f-4af7-bd3d-00b7d72e381b",
             "name": "update_rifa",
-            "url": "http://127.0.0.1:8000/v1/rifas/3",
+            "url": "http://127.0.0.1:8000/v1/rifas/9",
             "method": "PUT",
             "sortNum": 40000,
             "created": "2023-06-20T19:09:55.844Z",
-            "modified": "2023-06-20T19:44:27.608Z",
+            "modified": "2023-06-21T18:39:42.347Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"lugar_registro\": \"Pepa - Lima\"\n}",
+                "raw": "{\n  \"telefono\": \"1155224455\"\n}",
                 "form": []
             },
             "tests": []
@@ -265,6 +272,67 @@
             "modified": "2023-06-20T19:45:34.902Z",
             "headers": [],
             "params": [],
+            "tests": []
+        },
+        {
+            "_id": "16c2219e-c844-4f47-b42b-2bb59816acfb",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "3bde8f91-b23a-49a0-8ca0-262ea53215e1",
+            "name": "create user",
+            "url": "http://127.0.0.1:8000/v1/users",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2023-06-22T20:44:27.472Z",
+            "modified": "2023-06-22T21:56:54.811Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"agustin3@gmail.com\",\n  \"password\": \"password123\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "eb20dbac-bf74-4f82-9142-8298e30283c1",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "3bde8f91-b23a-49a0-8ca0-262ea53215e1",
+            "name": "get user",
+            "url": "http://127.0.0.1:8000/v1/users/2",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-06-22T20:45:07.023Z",
+            "modified": "2023-06-22T21:46:23.854Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "171461ce-9eb2-4f3c-8006-f40c0b1f59f9",
+            "colId": "a1dfaa86-182c-407f-ac64-f82aee59ad4a",
+            "containerId": "3bde8f91-b23a-49a0-8ca0-262ea53215e1",
+            "name": "user login",
+            "url": "http://127.0.0.1:8000/v1/login",
+            "method": "POST",
+            "sortNum": 80000,
+            "created": "2023-06-22T21:32:36.307Z",
+            "modified": "2023-06-22T22:08:52.981Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "username",
+                        "value": "agustin@gmail.com"
+                    },
+                    {
+                        "name": "password",
+                        "value": "password123"
+                    }
+                ]
+            },
             "tests": []
         }
     ]
