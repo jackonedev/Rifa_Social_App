@@ -56,9 +56,9 @@ class Sorteo(Base):
     fecha_sorteo = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    premios_id = Column(ARRAY, nullable=False)
-    rifas_id = Column(ARRAY, nullable=False)
-    clientes_id = Column(ARRAY, nullable=False)
+    premios_id = Column(ARRAY(Integer), nullable=False)
+    rifas_id = Column(ARRAY(Integer), nullable=False)
+    clientes_id = Column(ARRAY(Integer), nullable=False)
     premio_ganado = Column(Boolean, nullable=False, default=False)
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
