@@ -16,6 +16,7 @@ router = APIRouter(
 
 @router.get("/", response_model=List[Premio])
 def get_premios(db: Session = Depends(get_db), skip: int = 0, limit: int = 100, search: Optional[str] = "", current_user: models.User = Depends(get_current_user)):
+    print(search)
     premios = db.query(models.Premio).offset(skip).limit(limit).all()
     return premios
 
