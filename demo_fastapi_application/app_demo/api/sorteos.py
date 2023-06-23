@@ -1,6 +1,8 @@
 from fastapi import status, HTTPException, Depends, APIRouter
 from sqlalchemy.orm import Session
 from typing import List, Optional
+from datetime import datetime as dt
+import random
 
 from ..database import models
 from ..schemas.sorteos import SorteoCreate, SorteoOut, SorteoUpdate
@@ -35,8 +37,6 @@ def create_sorteo(db: Session = Depends(get_db), current_user: models.User = Dep
 
     db.commit()
 
-    print(rifa_ids)
-    print(premio_ids)
 
     sorteo = models.Sorteo(
         user_id=current_user.id,
@@ -64,17 +64,42 @@ def create_sorteo(db: Session = Depends(get_db), current_user: models.User = Dep
 @router.put("/{id}", status_code=status.HTTP_202_ACCEPTED, response_model=SorteoOut)
 def get_sorteo(id: int, payload:SorteoUpdate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
     sorteo_sc = db.query(models.Sorteo_SC).filter(models.Sorteo_SC.id == id).first()
-    
+    sorteo = db.query(models.Sorteo).filter(models.Sorteo.id == id).first()
     
     if not sorteo_sc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Sorteo con id {id} no encontrado")
     
-    if sorteo_sc.user_id != current_user.id:
+    if sorteo.user_id != current_user.id:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=f"No tienes permisos para editar este sorteo")
+    
+    if sorteo.sorteado:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Este sorteo ya fue realizado")
     
     # update the sorteo
     for field, value in payload.dict(exclude_unset=True).items():
         setattr(sorteo_sc, field, value)
+    sorteo_sc.fecha_sorteo = dt.now().strftime("%d/%m/%Y %H:%M:%S")
     
+    db.commit()
+    db.refresh(sorteo_sc)
     
+    # Realizamos el sorteo
+    sorteo.sorteado = True
+    premios = sorteo_sc.premios_id
+    print('hola mundo')
+    print(premios)
+    rifas_mezcladas = sorteo_sc.rifas_id
+    random.shuffle(rifas_mezcladas)
+    print(rifas_mezcladas)
+    ganadores = list(zip(premios, rifas_mezcladas))
+
+    sorteo_sc.ganadores = ganadores
+
+    db.commit()
     return sorteo_sc
+
+# create a get path operation for get all sorteos
+@router.get("/{sorteo_id}", status_code=status.HTTP_200_OK)
+def get_all_sorteos(sorteo_id:int, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
+    sorteos = db.query(models.Sorteo_SC).filter(models.Sorteo_SC.id == sorteo_id).first()
+    return sorteos

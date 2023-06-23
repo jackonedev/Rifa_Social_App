@@ -23,4 +23,3 @@ class SorteoUpdate(BaseModel):
     lugar_sorteo: str
     auspciante: str
     contacto: str
-    ganadores: List[str]
