@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from .database.database import engine
 from .database import models
 from fastapi.middleware.cors import CORSMiddleware
-from .api import premios, clientes, rifas, users, auth
+from .api import premios, clientes, rifas, users, auth, sorteos
 #https://youtu.be/ToXOb-lpipM
 
 
@@ -25,6 +25,7 @@ app.include_router(clientes.router)
 app.include_router(rifas.router)
 app.include_router(users.router)
 app.include_router(auth.router)
+app.include_router(sorteos.router)
 
 @app.get("/")
 def root():
