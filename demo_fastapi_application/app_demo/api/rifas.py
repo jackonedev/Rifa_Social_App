@@ -15,7 +15,7 @@ router = APIRouter(
 
 # Create
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=Rifa)
-def create_rifa(rifa: RifaCreate, db: Session = Depends(get_db), current_user: int = Depends(get_current_user)):
+def create_rifa(rifa: RifaCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
 
     telefono_existente = db.query(models.Cliente).filter(models.Cliente.telefono == rifa.telefono).first()
     if not telefono_existente:
@@ -43,7 +43,7 @@ def read_rifas(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
 
 # Read one
 @router.get("/{rifa_id}", response_model=Rifa)
-def read_rifa(rifa_id: int, db: Session = Depends(get_db), current_user: int = Depends(get_current_user)):
+def read_rifa(rifa_id: int, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
     db_rifa = db.query(models.Rifa).filter(models.Rifa.id == rifa_id).first()
     if not db_rifa:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Rifa not found")
@@ -51,14 +51,14 @@ def read_rifa(rifa_id: int, db: Session = Depends(get_db), current_user: int = D
 
 # Update - not done
 @router.put("/{rifa_id}", response_model=Rifa)
-def update_rifa(rifa_id: int, rifa_actualizada: RifaUpdate, db: Session = Depends(get_db), current_user: int = Depends(get_current_user)):
+def update_rifa(rifa_id: int, rifa_actualizada: RifaUpdate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
     rifa = db.query(models.Rifa).filter(models.Rifa.id == rifa_id).first()
 
     if not rifa:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"Rifa {rifa_id} no encontrada")
 
     #TODO: si actualizamos rifa, no actualizamos tabla clientes
-    if rifa.dict()['en_sorteo']:
+    if rifa.en_sorteo:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"Rifa {rifa_id} ya está en el sorteo y no puede ser modificada")
 
     for field, value in rifa_actualizada.dict(exclude_unset=True).items():
