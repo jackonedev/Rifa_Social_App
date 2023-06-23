@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, ARRAY
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
+from sqlalchemy.orm import relationship
 from .database import Base
 from typing import List
 
@@ -55,13 +56,14 @@ class Sorteo(Base):
     __tablename__ = "sorteos"
     id = Column(Integer, primary_key=True, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
-    clientes_id = Column(ARRAY(Integer), nullable=False)
     rifas_id = Column(ARRAY(Integer), nullable=False, unique=True)
     premios_id = Column(ARRAY(Integer), nullable=False, unique=True)
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     sorteado = Column(Boolean, nullable=False, default=False)
 
+    owner = relationship("User")#, back_populates="sorteos")
+    
 class Sorteo_SC(Base):
     __tablename__ = "sorteos_realizados"
     id = Column(Integer, primary_key=True, nullable=False)
