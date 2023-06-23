@@ -14,7 +14,7 @@ class RifaCreate(RifaBase):
 
 class RifaUpdate(BaseModel):
     jugador: Optional[str]
-    telefono: Optional[constr(regex=re.compile(r'^\+?\d{0,3}\d{0,5}-?\d{0,10}$'))]
+    telefono: Optional[constr(regex=re.compile(r'^\+?\d{0,3}\d{0,5}-?\d{0,10}$'))]#WARNING: if actualizamos telefono, no actualizamos tabla clientes
     fecha_cumple: Optional[datetime] = None
     lugar_registro: Optional[str]
 
