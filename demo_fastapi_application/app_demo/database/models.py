@@ -74,6 +74,6 @@ class Sorteo_SC(Base):
     fecha_sorteo = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     lugar_sorteo = Column(String, nullable=False, default='Lima - Gral. Paz')
-    auspciante = Column(String, nullable=False, default='Anónimo')
+    auspciante = Column(String, nullable=False, default='Nombre:')
     contacto = Column(String, nullable=False, default='Telefono:')
-    ganadores = Column(ARRAY(String), nullable=False)
+    ganadores = Column(ARRAY(String), nullable=False, default=[])

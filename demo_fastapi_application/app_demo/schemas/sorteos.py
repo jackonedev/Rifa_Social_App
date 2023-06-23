@@ -5,17 +5,22 @@ from . import users
 
 
 class SorteoBase(BaseModel):
-    id: int
     owner: users.UserOut
+    rifas_id: List[int]
+    premios_id: List[int]
 
 class SorteoCreate(SorteoBase):
-    rifas: List[int]
-    premios: List[int]
+    pass
 
 class SorteoOut(SorteoBase):
-    rifas: List[int]
-    premios: List[int]
+    id: int
     fecha_registro: datetime
 
     class Config:
         orm_mode = True
+
+class SorteoUpdate(BaseModel):
+    lugar_sorteo: str
+    auspciante: str
+    contacto: str
+    ganadores: List[str]
