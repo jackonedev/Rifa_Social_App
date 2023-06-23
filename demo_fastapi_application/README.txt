@@ -43,6 +43,14 @@ test/test_premios.py: utilizando sesion con esquema modular se crearon los prime
 test/test_utils.py: fichero test driven app_demo/utils/tools.py
 
 #8) Autenticación
+database/models.py: creacion del modelo User, Sorteo
+schemas/users.py: creación del modelo para User y token
+api/user.py: endpoint for creating users and get a particular user
+api/auth.py: endpoint for login user
+collections/: backup updated
+auth/oauth2.py: module for managing user token
+utils/utils.py: tools for cryptography processing
+
 
 #9) Migraciones
 Agregar la tabla de sorteos
