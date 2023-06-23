@@ -31,6 +31,7 @@ class Premio(Base):
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     en_sorteo = Column(Boolean, nullable=False, default=False)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
 
 class Rifa(Base):
     __tablename__ = "rifas"
@@ -53,7 +54,7 @@ class User(Base):
 class Sorteo(Base):
     __tablename__ = "sorteos"
     id = Column(Integer, primary_key=True, nullable=False)
-    user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     clientes_id = Column(ARRAY(Integer), nullable=False)
     rifas_id = Column(ARRAY(Integer), nullable=False, unique=True)
     premios_id = Column(ARRAY(Integer), nullable=False, unique=True)
@@ -64,8 +65,8 @@ class Sorteo(Base):
 class Sorteo_SC(Base):
     __tablename__ = "sorteos_realizados"
     id = Column(Integer, primary_key=True, nullable=False)
-    rifas_id = Column(ARRAY(Integer), ForeignKey("sorteos.rifas_id"), nullable=False)
-    premios_id = Column(ARRAY(Integer),ForeignKey("sorteos.premios_id"), nullable=False)
+    rifas_id = Column(ARRAY(Integer), ForeignKey("sorteos.rifas_id", ondelete="CASCADE"), nullable=False)
+    premios_id = Column(ARRAY(Integer),ForeignKey("sorteos.premios_id", ondelete="CASCADE"), nullable=False)
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
     fecha_sorteo = Column(TIMESTAMP(timezone=True),
