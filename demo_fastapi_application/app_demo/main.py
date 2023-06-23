@@ -6,7 +6,7 @@ from .api import premios, clientes, rifas, users, auth, sorteos
 #https://youtu.be/ToXOb-lpipM
 
 
-models.Base.metadata.create_all(bind=engine)
+# models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
