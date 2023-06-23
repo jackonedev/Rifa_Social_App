@@ -53,12 +53,24 @@ class User(Base):
 class Sorteo(Base):
     __tablename__ = "sorteos"
     id = Column(Integer, primary_key=True, nullable=False)
-    fecha_sorteo = Column(TIMESTAMP(timezone=True),
-                        nullable=False, server_default=text('now()'))
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-    premios_id = Column(ARRAY(Integer), nullable=False)
-    rifas_id = Column(ARRAY(Integer), nullable=False)
     clientes_id = Column(ARRAY(Integer), nullable=False)
-    premio_ganado = Column(Boolean, nullable=False, default=False)
+    rifas_id = Column(ARRAY(Integer), nullable=False, unique=True)
+    premios_id = Column(ARRAY(Integer), nullable=False, unique=True)
     fecha_registro = Column(TIMESTAMP(timezone=True),
                         nullable=False, server_default=text('now()'))
+    sorteado = Column(Boolean, nullable=False, default=False)
+
+class Sorteo_SC(Base):
+    __tablename__ = "sorteos_realizados"
+    id = Column(Integer, primary_key=True, nullable=False)
+    rifas_id = Column(ARRAY(Integer), ForeignKey("sorteos.rifas_id"), nullable=False)
+    premios_id = Column(ARRAY(Integer),ForeignKey("sorteos.premios_id"), nullable=False)
+    fecha_registro = Column(TIMESTAMP(timezone=True),
+                        nullable=False, server_default=text('now()'))
+    fecha_sorteo = Column(TIMESTAMP(timezone=True),
+                        nullable=False, server_default=text('now()'))
+    lugar_sorteo = Column(String, nullable=False, default='Lima - Gral. Paz')
+    auspciante = Column(String, nullable=False, default='Anónimo')
+    contacto = Column(String, nullable=False, default='Telefono:')
+    ganadores = Column(ARRAY(String), nullable=False)
