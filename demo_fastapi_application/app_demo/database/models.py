@@ -23,7 +23,6 @@ class Premio(Base):
     __tablename__ = "premios"
     id = Column(Integer, primary_key=True, nullable=False)
     nombre = Column(String, nullable=False)
-    cantidad = Column(Integer, nullable=False, default=1)
     precio = Column(Integer, nullable=False, default=3000)
     descuento = Column(Integer, nullable=True)
     auspiciante = Column(String, nullable=False, default="Anónimo")
