@@ -7,6 +7,7 @@ SQLAlchemy
 pytest
 passlib[bcrypt]
 python-jose[cryptography]
+requests
 
 #2) Conexión de la base de datos
 utils.config.py
@@ -53,9 +54,15 @@ utils/utils.py: tools for cryptography processing
 
 
 #9) Migraciones
-Agregar la tabla de sorteos
-Agregar las columnas de sorteado(bool)
+api.sorteos.py
+schemas.sorteos.py
+<cmd> alembic init migrations
+migrations.env.py: update db_url, target.metadata
+<cmd> alembic revision --autogenerate -m "first-migration"
+<cmd> alembic upgrade head  |  alembic downgrade -1
+
 
 #10) Deployment
 
 #11) Presentacion
+main.py: HTTP request package in root path
