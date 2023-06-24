@@ -24,6 +24,11 @@ def create_sorteo(db: Session = Depends(get_db), current_user: models.User = Dep
     rifas = db.query(models.Rifa).filter(models.Rifa.en_sorteo == False).all()
     premios = db.query(models.Premio).filter(models.Premio.en_sorteo == False).all()
 
+    if len(rifas) == 0:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"No hay rifas para realizar el sorteo")
+    
+    if len(premios) == 0:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=f"No hay premios para realizar el sorteo")
 
     rifa_ids = []
     for rifa in rifas:
