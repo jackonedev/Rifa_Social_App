@@ -76,3 +76,6 @@ class Sorteo_SC(Base):
     auspciante = Column(String, nullable=False, default='Nombre:')
     contacto = Column(String, nullable=False, default='Telefono:')
     ganadores = Column(ARRAY(String), nullable=False, default=[])
+
+    user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
+    owner = relationship("User")
