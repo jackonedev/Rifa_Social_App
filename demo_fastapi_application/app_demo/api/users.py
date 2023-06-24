@@ -15,6 +15,11 @@ router = APIRouter(
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=UserOut)
 def create_user(user: UserCreate, db=Depends(get_db)):
+
+    db_user = db.query(models.User).filter(models.User.email == user.email).first()
+    if db_user:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already registered")
+
     hashed_psw = hash_password(user.password)
     user.password = hashed_psw
     db_user = models.User(**user.dict())
