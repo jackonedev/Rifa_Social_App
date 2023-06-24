@@ -1,8 +1,8 @@
-"""auto-generate
+"""auto-table
 
-Revision ID: 8de0985825df
+Revision ID: 4b0483c18906
 Revises: 
-Create Date: 2023-06-23 17:54:47.132855
+Create Date: 2023-06-24 14:22:41.969600
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8de0985825df'
+revision = '4b0483c18906'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -49,7 +49,6 @@ def upgrade() -> None:
     op.create_table('premios',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('nombre', sa.String(), nullable=False),
-    sa.Column('cantidad', sa.Integer(), nullable=False),
     sa.Column('precio', sa.Integer(), nullable=False),
     sa.Column('descuento', sa.Integer(), nullable=True),
     sa.Column('auspiciante', sa.String(), nullable=False),
@@ -84,8 +83,10 @@ def upgrade() -> None:
     sa.Column('auspciante', sa.String(), nullable=False),
     sa.Column('contacto', sa.String(), nullable=False),
     sa.Column('ganadores', sa.ARRAY(sa.String()), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['premios_id'], ['sorteos.premios_id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['rifas_id'], ['sorteos.rifas_id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
