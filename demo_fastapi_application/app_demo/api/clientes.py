@@ -30,7 +30,9 @@ def create_cliente(cliente: ClienteCreate, db: Session = Depends(get_db), curren
                 except ValueError:
                     # raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Formato de fecha incorrecto")
                     # descartamos el input ingresado
-                    cliente.fecha_cumple = None
+                    # cliente.fecha_cumple = None
+                    # lo guardamos como venga
+                    pass
 
     db_cliente = models.Cliente(**cliente.dict())
     db.add(db_cliente)
