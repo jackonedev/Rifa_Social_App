@@ -6,7 +6,7 @@ from datetime import datetime
 
 class PremioBase(BaseModel):
     nombre: str
-    cantidad: Optional[int]
+    cantidad: Optional[int] = 1
     precio: int
     descuento: Optional[int]
     auspiciante: Optional[str]

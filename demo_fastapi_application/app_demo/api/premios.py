@@ -23,11 +23,12 @@ def get_premios(db: Session = Depends(get_db), skip: int = 0, limit: int = 100, 
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=Premio)
 def create_premio(premio_nuevo: PremioCreate, db: Session = Depends(get_db), current_user: models.User = Depends(get_current_user)):
-    premio = models.Premio(user_id=current_user.id, **premio_nuevo.dict())
 
-    db.add(premio)
-    db.commit()
-    db.refresh(premio)
+    for i in range(premio_nuevo.cantidad):
+        premio = models.Premio(user_id=current_user.id, **premio_nuevo.dict(exclude={'cantidad'}))
+        db.add(premio)
+        db.commit()
+        db.refresh(premio)
 
     return premio
 
