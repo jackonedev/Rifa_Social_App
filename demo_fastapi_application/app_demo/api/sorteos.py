@@ -86,11 +86,8 @@ def get_sorteo(id: int, payload:SorteoUpdate, db: Session = Depends(get_db), cur
     # Realizamos el sorteo
     sorteo.sorteado = True
     premios = sorteo_sc.premios_id
-    print('hola mundo')
-    print(premios)
     rifas_mezcladas = sorteo_sc.rifas_id
     random.shuffle(rifas_mezcladas)
-    print(rifas_mezcladas)
     ganadores = list(zip(premios, rifas_mezcladas))
 
     sorteo_sc.ganadores = ganadores
