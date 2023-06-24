@@ -9,13 +9,13 @@ class RifaBase(BaseModel):
     telefono: constr(regex=re.compile(r'^\+?\d{0,3}\d{0,5}-?\d{0,10}$'))
 
 class RifaCreate(RifaBase):
-    fecha_cumple: Optional[datetime] = None
+    fecha_cumple: Optional[str] = None
     lugar_registro: Optional[str]
 
 class RifaUpdate(BaseModel):
     jugador: Optional[str]
     telefono: Optional[constr(regex=re.compile(r'^\+?\d{0,3}\d{0,5}-?\d{0,10}$'))]#WARNING: if actualizamos telefono, no actualizamos tabla clientes
-    fecha_cumple: Optional[datetime] = None
+    fecha_cumple: Optional[str] = None
     lugar_registro: Optional[str]
 
 class Rifa(RifaBase):
