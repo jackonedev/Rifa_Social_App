@@ -23,3 +23,14 @@ class SorteoUpdate(BaseModel):
     lugar_sorteo: str
     auspciante: str
     contacto: str
+
+class SorteoRealizado(BaseModel):
+    id: int
+    fecha_registro: datetime
+    lugar_sorteo: str
+    auspciante: str
+    contacto: str
+    ganadores: List[tuple]
+
+    class Config:
+        orm_mode = True
