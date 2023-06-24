@@ -1,15 +1,15 @@
 from fastapi import FastAPI
-from .database.database import engine
-from .database import models
+# from .database.database import engine
+# from .database import models
 from fastapi.middleware.cors import CORSMiddleware
 from .api import premios, clientes, rifas, users, auth, sorteos
-import requests
+import requests, psycopg2
 #https://youtu.be/ToXOb-lpipM
-
 
 # models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
+
 
 origins = ["*"]
 
@@ -76,7 +76,8 @@ def root():
                    json={"nombre": "3 litros de birra artesanal Cordobesa",
                          "precio": 2500,
                          "auspiciante": "La Casa del Chopp!",
-                         "cantidad": 3})
+                         "cantidad": 3,
+                         "descripcion": "3 botellas de 1 litro de cerveza artesanal Cordobesa"})
  
 
 
