@@ -30,12 +30,13 @@ app.include_router(sorteos.router)
 
 @app.get("/")
 def root():
+    base_url = "http://localhost:8000/v1"
     # create a requests for creating a user
-    response = requests.post("http://localhost:8000/v1/users/", json={"email": "test2@test.com", "password": "test"})
+    response = requests.post(f"{base_url}/users/", json={"email": "test2@test.com", "password": "test"})
     print(response.json())
 
     # let's login the user - from now on it has 30 minutes to use the token
-    response = requests.post("http://localhost:8000/v1/login/", data={"username": "test2@test.com", "password": "test"})
+    response = requests.post(f"{base_url}/login/", data={"username": "test2@test.com", "password": "test"})
     print(response.json())
     # get the access token
     access_token = response.json()["access_token"]
@@ -44,34 +45,34 @@ def root():
 
     # let's create some rifas
     for i in range(5):
-        requests.post("http://localhost:8000/v1/rifas/", 
+        requests.post(f"{base_url}/rifas/", 
                       headers=headers,
                       json={"jugador": "Alejandra Z", "telefono": "351556677", "fecha_cumple": None})
     for i in range(3):
-        requests.post("http://localhost:8000/v1/rifas/", 
+        requests.post(f"{base_url}/rifas/", 
                       headers=headers,
                       json={"jugador": "Hector Hernandez", "telefono": "3512232233", "fecha_cumple": "15/05/1980"})
     for i in range(10):
-        requests.post("http://localhost:8000/v1/rifas/", 
+        requests.post(f"{base_url}/rifas/", 
                       headers=headers,
                       json={"jugador": "Santiago", "telefono": "+543516104545", "fecha_cumple": "20/05"})
     for i in range(4):
-        requests.post("http://localhost:8000/v1/rifas/", 
+        requests.post(f"{base_url}/rifas/", 
                       headers=headers,
                       json={"jugador": "Fabricio Tomaselli", "telefono": "351-3511111", "fecha_cumple": "3 de febrero"})
 
     # let's create some premios
-    requests.post("http://localhost:8000/v1/premios/", 
+    requests.post(f"{base_url}/premios/", 
                   headers=headers,
                   json={"nombre": "Ganaste una cena para dos personas en Menorca Bar",
                         "descripcion": "Cena para dos personas en Menorca Bar, incluye entrada, plato principal, postre y bebida",
                         "precio": 18000})
-    requests.post("http://localhost:8000/v1/premios/",
+    requests.post(f"{base_url}/premios/",
                   headers=headers,
                   json={"nombre": "Ganaste una botella de vino Malbec de finca Mendocina",
                         "descripcion": "Botella de vino de regalo más descuento del 30% en la segunda unidad",
                         "precio": 7500})
-    requests.post("http://localhost:8000/v1/premios/",
+    requests.post(f"{base_url}/premios/",
                   headers=headers,
                    json={"nombre": "3 litros de birra artesanal Cordobesa",
                          "precio": 2500,
