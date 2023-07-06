@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from .api import premios, clientes, rifas, users, auth, sorteos
 import requests, psycopg2
 #https://youtu.be/ToXOb-lpipM
+from .utils import client
 
 # models.Base.metadata.create_all(bind=engine)
 
@@ -32,34 +33,38 @@ app.include_router(sorteos.router)
 def root():
     base_url = "http://localhost:8000/v1"
     # create a requests for creating a user
-    response = requests.post(f"{base_url}/users/", json={"email": "test2@test.com", "password": "test"})
-    print(response.json())
+    # response = requests.post(f"{base_url}/users/", json={"email": "test2@test.com", "password": "test"})
+    # print(response.json())
+    client.create_user(username="httpx_user@test2.com", password="admin123", service=base_url+"/users/")
 
     # let's login the user - from now on it has 30 minutes to use the token
-    response = requests.post(f"{base_url}/login/", data={"username": "test2@test.com", "password": "test"})
-    print(response.json())
-    # get the access token
-    access_token = response.json()["access_token"]
-    # create a header with the token
+    # response = requests.post(f"{base_url}/login/", data={"username": "httpx_user@test2.com", "password": "admin123"})
+    # print(response.json())
+    # # get the access token
+    # access_token = response.json()["access_token"]
+
+    access_token = client.login(username="httpx_user@test2.com", password="admin123", service=base_url+"/login/")
+    # # create a header with the token
     headers = {"Authorization": f"Bearer {access_token}"}
+    # print(headers)
 
     # let's create some rifas
-    for i in range(5):
-        requests.post(f"{base_url}/rifas/", 
-                      headers=headers,
-                      json={"jugador": "Alejandra Z", "telefono": "351556677", "fecha_cumple": None})
-    for i in range(3):
-        requests.post(f"{base_url}/rifas/", 
-                      headers=headers,
-                      json={"jugador": "Hector Hernandez", "telefono": "3512232233", "fecha_cumple": "15/05/1980"})
-    for i in range(10):
-        requests.post(f"{base_url}/rifas/", 
-                      headers=headers,
-                      json={"jugador": "Santiago", "telefono": "+543516104545", "fecha_cumple": "20/05"})
-    for i in range(4):
-        requests.post(f"{base_url}/rifas/", 
-                      headers=headers,
-                      json={"jugador": "Fabricio Tomaselli", "telefono": "351-3511111", "fecha_cumple": "3 de febrero"})
+    # for i in range(5):
+    #     requests.post(f"{base_url}/rifas/", 
+    #                   headers=headers,
+    #                   json={"jugador": "Alejandra Z", "telefono": "351556677", "fecha_cumple": None})
+    # for i in range(3):
+    #     requests.post(f"{base_url}/rifas/", 
+    #                   headers=headers,
+    #                   json={"jugador": "Hector Hernandez", "telefono": "3512232233", "fecha_cumple": "15/05/1980"})
+    # for i in range(10):
+    #     requests.post(f"{base_url}/rifas/", 
+    #                   headers=headers,
+    #                   json={"jugador": "Santiago", "telefono": "+543516104545", "fecha_cumple": "20/05"})
+    # for i in range(4):
+    #     requests.post(f"{base_url}/rifas/", 
+    #                   headers=headers,
+    #                   json={"jugador": "Fabricio Tomaselli", "telefono": "351-3511111", "fecha_cumple": "3 de febrero"})
 
     # let's create some premios
     requests.post(f"{base_url}/premios/", 
@@ -77,7 +82,7 @@ def root():
                    json={"nombre": "3 litros de birra artesanal Cordobesa",
                          "precio": 2500,
                          "auspiciante": "La Casa del Chopp!",
-                         "cantidad": 3,
+                         "cantidad": 1,
                          "descripcion": "3 botellas de 1 litro de cerveza artesanal Cordobesa"})
  
 
