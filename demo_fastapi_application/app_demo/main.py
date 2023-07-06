@@ -6,7 +6,7 @@ from .api import premios, clientes, rifas, users, auth, sorteos
 import requests, psycopg2
 #https://youtu.be/ToXOb-lpipM
 from .utils import client
-import httpx
+import httpx, asyncio
 # models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
@@ -49,6 +49,16 @@ def root():
     # print(headers)
 
     # let's create some rifas
+    async def make_async_requests():
+        async with httpx.AsyncClient() as client:
+            headers = {"Content-Type": "application/json"}
+            response = await client.get(f"{base_url}/rifas/", headers=headers)
+            # Realizar más solicitudes asincrónicas aquí si es necesario
+            return response
+
+    response = asyncio.run(make_async_requests())
+    print(response.json())
+    #TODO: reemplazar los httpx requests por async requests
     for i in range(5):
         httpx.post(f"{base_url}/rifas/", 
                       headers=headers,
