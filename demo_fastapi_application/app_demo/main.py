@@ -6,7 +6,7 @@ from .api import premios, clientes, rifas, users, auth, sorteos
 import requests, psycopg2
 #https://youtu.be/ToXOb-lpipM
 from .utils import client
-
+import httpx
 # models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
@@ -49,35 +49,35 @@ def root():
     # print(headers)
 
     # let's create some rifas
-    # for i in range(5):
-    #     requests.post(f"{base_url}/rifas/", 
-    #                   headers=headers,
-    #                   json={"jugador": "Alejandra Z", "telefono": "351556677", "fecha_cumple": None})
-    # for i in range(3):
-    #     requests.post(f"{base_url}/rifas/", 
-    #                   headers=headers,
-    #                   json={"jugador": "Hector Hernandez", "telefono": "3512232233", "fecha_cumple": "15/05/1980"})
-    # for i in range(10):
-    #     requests.post(f"{base_url}/rifas/", 
-    #                   headers=headers,
-    #                   json={"jugador": "Santiago", "telefono": "+543516104545", "fecha_cumple": "20/05"})
-    # for i in range(4):
-    #     requests.post(f"{base_url}/rifas/", 
-    #                   headers=headers,
-    #                   json={"jugador": "Fabricio Tomaselli", "telefono": "351-3511111", "fecha_cumple": "3 de febrero"})
+    for i in range(5):
+        httpx.post(f"{base_url}/rifas/", 
+                      headers=headers,
+                      json={"jugador": "Alejandra Z", "telefono": "351556677", "fecha_cumple": None})
+    for i in range(3):
+        httpx.post(f"{base_url}/rifas/", 
+                      headers=headers,
+                      json={"jugador": "Hector Hernandez", "telefono": "3512232233", "fecha_cumple": "15/05/1980"})
+    for i in range(10):
+        httpx.post(f"{base_url}/rifas/", 
+                      headers=headers,
+                      json={"jugador": "Santiago", "telefono": "+543516104545", "fecha_cumple": "20/05"})
+    for i in range(4):
+        httpx.post(f"{base_url}/rifas/", 
+                      headers=headers,
+                      json={"jugador": "Fabricio Tomaselli", "telefono": "351-3511111", "fecha_cumple": "3 de febrero"})
 
     # let's create some premios
-    requests.post(f"{base_url}/premios/", 
+    httpx.post(f"{base_url}/premios/", 
                   headers=headers,
                   json={"nombre": "Ganaste una cena para dos personas en Menorca Bar",
                         "descripcion": "Cena para dos personas en Menorca Bar, incluye entrada, plato principal, postre y bebida",
                         "precio": 18000})
-    requests.post(f"{base_url}/premios/",
+    httpx.post(f"{base_url}/premios/",
                   headers=headers,
                   json={"nombre": "Ganaste una botella de vino Malbec de finca Mendocina",
                         "descripcion": "Botella de vino de regalo más descuento del 30% en la segunda unidad",
                         "precio": 7500})
-    requests.post(f"{base_url}/premios/",
+    httpx.post(f"{base_url}/premios/",
                   headers=headers,
                    json={"nombre": "3 litros de birra artesanal Cordobesa",
                          "precio": 2500,
@@ -88,5 +88,5 @@ def root():
 
 
 
-    return {"message": "Hello World"}
+    return {"message": "Hello World v2"}
 
