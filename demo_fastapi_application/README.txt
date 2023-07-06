@@ -8,6 +8,7 @@ pytest
 passlib[bcrypt]
 python-jose[cryptography]
 requests
+httpx
 
 #2) Conexión de la base de datos
 utils.config.py
